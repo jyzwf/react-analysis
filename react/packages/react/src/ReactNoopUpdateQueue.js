@@ -9,6 +9,7 @@ import warning from 'shared/warning';
 
 const didWarnStateUpdateForUnmountedComponent = {};
 
+// 对没挂载的组价调用 forceUpdate、replaceState、setState 时给出警告，并且只警告一次
 function warnNoop(publicInstance, callerName) {
   if (__DEV__) {
     const constructor = publicInstance.constructor;
@@ -43,6 +44,7 @@ const ReactNoopUpdateQueue = {
    * @protected
    * @final
    */
+  // 检测该组件是否已挂载
   isMounted: function(publicInstance) {
     return false;
   },

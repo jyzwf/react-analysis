@@ -8,11 +8,11 @@
 //  react 的版本
 import ReactVersion from 'shared/ReactVersion';
 import {
-  REACT_ASYNC_MODE_TYPE,
-  REACT_FRAGMENT_TYPE,
-  REACT_PROFILER_TYPE,
-  REACT_STRICT_MODE_TYPE,
-  REACT_PLACEHOLDER_TYPE,
+  REACT_ASYNC_MODE_TYPE,  // Symbol.for('react.async_mode')
+  REACT_FRAGMENT_TYPE,    // Symbol.for('react.fragment')
+  REACT_PROFILER_TYPE,    // Symbol.for('react.profiler')
+  REACT_STRICT_MODE_TYPE, // Symbol.for('react.strict_mode')
+  REACT_PLACEHOLDER_TYPE, // Symbol.for('react.placeholder')
 } from 'shared/ReactSymbols';   // 一些模式的Symbol显示
 
 import { enableSuspense } from 'shared/ReactFeatureFlags';

@@ -9,10 +9,13 @@ import invariant from 'shared/invariant';
 import warning from 'shared/warning';
 import {
   getIteratorFn,
-  REACT_ELEMENT_TYPE,
-  REACT_PORTAL_TYPE,
+  REACT_ELEMENT_TYPE, // Symbol.for('react.element')
+  REACT_PORTAL_TYPE,  // Symbol.for('react.portal')
 } from 'shared/ReactSymbols';
 
+
+// isValidElement: 为一个不是null的对象，并且 $$typeof = Symbol.for('react.element')
+// cloneAndReplaceKey：clone 一个节点，并且只改变其 key
 import {isValidElement, cloneAndReplaceKey} from './ReactElement';
 import ReactDebugCurrentFrame from './ReactDebugCurrentFrame';
 
@@ -240,6 +243,7 @@ function traverseAllChildren(children, callback, traverseContext) {
  * @param {number} index Index that is used if a manual key is not provided.
  * @return {string}
  */
+// 获取组件的key值，如果组件原来就有key,则用该key，否则产生"随机"产生一个
 function getComponentKey(component, index) {
   // Do some typechecking here since we call this blindly. We want to ensure
   // that we don't block potential future ES APIs.
@@ -276,6 +280,14 @@ function forEachChildren(children, forEachFunc, forEachContext) {
   if (children == null) {
     return children;
   }
+  
+  // {
+  //   result: null,
+  //   keyPrefix: null,
+  //   func: forEachFunc,
+  //   context: forEachContext,
+  //   count: 0,
+  // }
   const traverseContext = getPooledTraverseContext(
     null,
     null,

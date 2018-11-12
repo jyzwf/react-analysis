@@ -7,7 +7,7 @@
  */
 
 import type {RefObject} from 'shared/ReactTypes';
-
+// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/seal
 // an immutable object with a single mutable value
 export function createRef(): RefObject {
   const refObject = {

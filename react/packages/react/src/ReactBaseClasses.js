@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+// 断言
 import invariant from 'shared/invariant';
 import lowPriorityWarning from 'shared/lowPriorityWarning';
 
@@ -25,6 +25,7 @@ function Component(props, context, updater) {
   this.refs = emptyObject;
   // We initialize the default updater but the real one gets injected by the
   // renderer.
+  // 真正的 updater 会在渲染的时候注入，也就是 react-dom 的时候
   this.updater = updater || ReactNoopUpdateQueue;
 }
 
@@ -89,6 +90,7 @@ Component.prototype.forceUpdate = function(callback) {
  * we would like to deprecate them, we're not going to move them over to this
  * modern base class. Instead, we define a getter that warns if it's accessed.
  */
+// 弃用的Api，只在开发环境生效，并且在使用时给予⚠️
 if (__DEV__) {
   const deprecatedAPIs = {
     isMounted: [
